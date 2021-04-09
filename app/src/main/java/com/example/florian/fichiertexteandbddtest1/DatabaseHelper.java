@@ -69,6 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(EQUIPE_KEY_NOM, nom_equipe);
         values.put(EQUIPE_KEY_NIVEAU,niveau_equipe);
         db.insert(TABLE_EQUIPE, null, values);
+        db.close();
     }
 
     //obtenir la liste des équipes
@@ -114,7 +115,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(TABLE_EQUIPE, EQUIPE_KEY_ID + " = ?",new String[]{String.valueOf(id)});
         db.close();
     }
-
+    public void deleteAllEquipe(){//Supprimer tous et recrée les tables
+      SQLiteDatabase db = this.getWritableDatabase();
+      db.delete(TABLE_JOUEUR,null,null);
+      db.delete(TABLE_EQUIPE,null,null);
+        db.close();
+    }
     public Equipe getEquipeById(int id){
         String selectQuery = "SELECT * FROM " + TABLE_EQUIPE + " WHERE " + EQUIPE_KEY_ID + " = " + id;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -123,7 +129,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Equipe equipe = new Equipe();
         equipe.setId(c.getInt(c.getColumnIndex(EQUIPE_KEY_ID)));
         equipe.setNom(c.getString(c.getColumnIndex(EQUIPE_KEY_NOM)));
-
+        db.close();
+        c.close();
         return equipe;
     }
 
@@ -178,6 +185,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             } while (c.moveToNext());
         }
+        db.close();
+        c.close();
         return joueurArrayList;
     }
 
@@ -189,12 +198,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(JOUEUR_KEY_PRENOM, prenom);
         values.put(JOUEUR_KEY_NUM_LICENCE, numLicence);
         db.update(TABLE_JOUEUR, values, JOUEUR_KEY_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
     }
 
     //supprimer un joueur
     public void deleteJoueur(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_JOUEUR, JOUEUR_KEY_ID + " = ?",new String[]{String.valueOf(id)});
+        db.close();
     }
 
 
@@ -209,7 +220,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         joueur.setPrenom(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
         joueur.setNum_licence(c.getString(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
         //joueur.setEquipeId(c.getString(c.getColumnIndex(JOUEUR_KEY_EQUIPE)));
-
+        c.close();
+        db.close();
         return joueur;
     }
 

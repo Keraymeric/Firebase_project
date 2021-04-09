@@ -65,6 +65,11 @@ public class EquipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                databaseHelper.deleteAllEquipe();
+                equipeArrayList = databaseHelper.getAllEquipe();
+                equipeAdapter = new EquipeAdapter(EquipeActivity.this, equipeArrayList);
+                listView.setAdapter(equipeAdapter);
+
             }
         });
 
@@ -148,6 +153,10 @@ public class EquipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                databaseHelper.deleteAllEquipe();
+                equipeArrayList = databaseHelper.getAllEquipe();
+                equipeAdapter = new EquipeAdapter(EquipeActivity.this, equipeArrayList);
+                listView.setAdapter(equipeAdapter);
             }
         });
 
@@ -230,6 +239,10 @@ public class EquipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                databaseHelper.deleteAllEquipe();
+                equipeArrayList = databaseHelper.getAllEquipe();
+                equipeAdapter = new EquipeAdapter(EquipeActivity.this, equipeArrayList);
+                listView.setAdapter(equipeAdapter);
             }
         });
 
