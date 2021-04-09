@@ -26,12 +26,13 @@ import java.util.List;
 
 public class EquipeActivity extends AppCompatActivity {
 
-    private Button buttonAjouterEquipe, buttonRetourAccueil;
+    private Button buttonAjouterEquipe, buttonRetourAccueil,buttonImportFirebase;
     private ListView listView;
     private ArrayList<Equipe> equipeArrayList;
     private EquipeAdapter equipeAdapter;
     private DatabaseHelper databaseHelper;
-
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference firebaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,14 @@ public class EquipeActivity extends AppCompatActivity {
 
         buttonAjouterEquipe = (Button)findViewById(R.id.buttonAjouterEquipe);
         buttonRetourAccueil = (Button)findViewById(R.id.buttonRetourAccueil);
+        buttonImportFirebase = findViewById(R.id.buttonFirebase);
         listView = (ListView)findViewById(R.id.lvEquipe);
 
         databaseHelper = new DatabaseHelper(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseReference = firebaseDatabase.getReference().child("Equipe");
 
         equipeArrayList = databaseHelper.getAllEquipe();
-
         equipeAdapter = new EquipeAdapter(this, equipeArrayList);
         listView.setAdapter(equipeAdapter);
 
@@ -58,6 +61,12 @@ public class EquipeActivity extends AppCompatActivity {
             }
         });
 
+        buttonImportFirebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+            }
+        });
 
         buttonAjouterEquipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +87,7 @@ public class EquipeActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intent);*/
                                 Equipe equipe = databaseHelper.getLastEquipeInsert();
+                                firebaseReference.child(String.valueOf(equipe.getId())).setValue(equipe);
                                 Intent intent = new Intent(EquipeActivity.this, UpdateDeleteEquipeActivity.class);
                                 intent.putExtra("equipe", equipe);
                                 startActivity(intent);
@@ -114,12 +124,14 @@ public class EquipeActivity extends AppCompatActivity {
 
         buttonAjouterEquipe = (Button)findViewById(R.id.buttonAjouterEquipe);
         buttonRetourAccueil = (Button)findViewById(R.id.buttonRetourAccueil);
+        buttonImportFirebase = findViewById(R.id.buttonFirebase);
         listView = (ListView)findViewById(R.id.lvEquipe);
 
         databaseHelper = new DatabaseHelper(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseReference = firebaseDatabase.getReference().child("Equipe");
 
         equipeArrayList = databaseHelper.getAllEquipe();
-
         equipeAdapter = new EquipeAdapter(this, equipeArrayList);
         listView.setAdapter(equipeAdapter);
 
@@ -132,6 +144,12 @@ public class EquipeActivity extends AppCompatActivity {
             }
         });
 
+        buttonImportFirebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+            }
+        });
 
         buttonAjouterEquipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +169,7 @@ public class EquipeActivity extends AppCompatActivity {
                                 finish();
                                 startActivity(intent);*/
                                 Equipe equipe = databaseHelper.getLastEquipeInsert();
+                                firebaseReference.child(String.valueOf(equipe.getId())).setValue(equipe);
                                 Intent intent = new Intent(EquipeActivity.this, UpdateDeleteEquipeActivity.class);
                                 intent.putExtra("equipe", equipe);
                                 startActivity(intent);
@@ -187,12 +206,14 @@ public class EquipeActivity extends AppCompatActivity {
 
         buttonAjouterEquipe = (Button)findViewById(R.id.buttonAjouterEquipe);
         buttonRetourAccueil = (Button)findViewById(R.id.buttonRetourAccueil);
+        buttonImportFirebase = findViewById(R.id.buttonFirebase);
         listView = (ListView)findViewById(R.id.lvEquipe);
 
         databaseHelper = new DatabaseHelper(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseReference = firebaseDatabase.getReference().child("Equipe");
 
         equipeArrayList = databaseHelper.getAllEquipe();
-
         equipeAdapter = new EquipeAdapter(this, equipeArrayList);
         listView.setAdapter(equipeAdapter);
 
@@ -205,6 +226,12 @@ public class EquipeActivity extends AppCompatActivity {
             }
         });
 
+        buttonImportFirebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+            }
+        });
 
         buttonAjouterEquipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,6 +253,7 @@ public class EquipeActivity extends AppCompatActivity {
                                 startActivity(intent);*/
 
                                 Equipe equipe = databaseHelper.getLastEquipeInsert();
+                                firebaseReference.child(String.valueOf(equipe.getId())).setValue(equipe);
                                 Intent intent = new Intent(EquipeActivity.this, UpdateDeleteEquipeActivity.class);
                                 intent.putExtra("equipe", equipe);
                                 startActivity(intent);

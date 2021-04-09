@@ -8,41 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:930243134779:android:57c6777b44b153a3eaa31e",
+        "mobilesdk_app_id": "1:930243134779:android:bc628d87d15d1f56eaa31e",
         "android_client_info": {
           "package_name": "com.example.florian.fichiertexteandbddtest1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "930243134779-sccc5nb38cf3qcfk7rddtgntb9ptaitl.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDLHoBILBG0F70xRscjyJP6K6E5wM8f160"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "930243134779-sccc5nb38cf3qcfk7rddtgntb9ptaitl.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:930243134779:android:1bf7c2fb1789b069eaa31e",
-        "android_client_info": {
-          "package_name": "com.example.retrieve_data"
-        }
-      },
-      "oauth_client": [
+          "client_id": "930243134779-v9409i2svhecmpiihhgtj3cccsg0o4ku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.florian.fichiertexteandbddtest1",
+            "certificate_hash": "cc3f824e16062ba3bb9f63b0bcf6ea70faaea6b6"
+          }
+        },
         {
           "client_id": "930243134779-sccc5nb38cf3qcfk7rddtgntb9ptaitl.apps.googleusercontent.com",
           "client_type": 3
