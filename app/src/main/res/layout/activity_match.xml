@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatchActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/buttonMatchRetourAccueille"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retour à l'accueil" />
+
+    <TextView
+        android:id="@+id/currentMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:text="Match"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonPreparatif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Préparatifs" />
+
+            <TextView
+                android:id="@+id/disableButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:padding="10dp"
+                android:text="Vous devez d'abord renseigner les équipes A et B dans l'onglet préparatifs avant de proursuivre"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonEquipeA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Equipe A" />
+                <Button
+                    android:id="@+id/buttonValidationEquipeA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Validation par l'équipe B" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonEquipeB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Equipe B" />
+
+                <Button
+                    android:id="@+id/buttonValidationEquipeB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Validation par l'équipe A" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonSet1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set 1" />
+
+            <Button
+                android:id="@+id/buttonSet2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set 2" />
+
+            <Button
+                android:id="@+id/buttonSet3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set 3" />
+
+            <Button
+                android:id="@+id/buttonSet4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set 4" />
+
+            <Button
+                android:id="@+id/buttonSet5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Set 5" />
+
+            <Button
+                android:id="@+id/buttonResultat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Résultat" />
+
+            <Button
+                android:id="@+id/buttonApprobation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Approbations" />
+
+            <Button
+                android:id="@+id/buttonRecapitulatif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Récapitulatif de la feuille de match" />
+
+            <Button
+                android:id="@+id/buttonReinitialiser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_red_light"
+                android:text="Réinitialiser la feuille de match" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Approbation">
+
+    <!--<TextView
+        android:id="@+id/textView23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1er Arbitre" />
+
+    <EditText
+        android:id="@+id/nomArbitre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NOM - Prénom" />
+
+    <EditText
+        android:id="@+id/numLicenceArbitre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="N° License" />
+
+    <EditText
+        android:id="@+id/clubDesigneArbitre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Club désigné" />
+
+    <EditText
+        android:id="@+id/indemniteArbitre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Indemnité €/équipe " />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2eme Arbitre" />
+
+    <EditText
+        android:id="@+id/nomArbitre2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NOM - Prénom" />
+
+    <EditText
+        android:id="@+id/numLicenceArbitre2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="N° Licence" />-->
+
+    <!--<TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAPITAINE A" />
+
+    <EditText
+        android:id="@+id/nomCapitaineA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NOM - Prénom" />
+
+    <EditText
+        android:id="@+id/numLicenceCapitaineA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="N° Licence" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAPITAINE B" />
+
+    <EditText
+        android:id="@+id/nomCapitaineB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NOM - Prénom" />
+
+    <EditText
+        android:id="@+id/numLicenceCapitaineB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="N° Licence" />-->
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Remarques et sanctions" />
+
+    <EditText
+        android:id="@+id/approbationRemarque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Remarques et sanctions" />
+
+    <Button
+        android:id="@+id/buttonApprobationValider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider" />
+
+    <Button
+        android:id="@+id/buttonApprobationSignerArbitre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signature 1er Arbitre" />
+
+    <Button
+        android:id="@+id/buttonApprobationSignerArbitre2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signature 2eme Arbitre" />
+
+    <Button
+        android:id="@+id/buttonApprobationSignerCapitaineA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signature Capitaine équipe A" />
+
+    <Button
+        android:id="@+id/buttonApprobationSignerCapitaineB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signature capitaine équipe B" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Signature de l'arbitre 1 : "
+            android:layout_weight="1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Signature de l'arbitre 2 : "
+            android:layout_weight="1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Signature du capitaine de l'équipe A : "
+            android:layout_weight="1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Signature du capitaine de l'équipe B : "
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageViewSignatureArbitre1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/imageViewSignatureArbitre2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/imageViewSignatureCapitaineEquipeA"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/imageViewSignatureCapitaineEquipeB"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRetour"
+        android:text="Retour feuille de match"
+        />
+</LinearLayout>

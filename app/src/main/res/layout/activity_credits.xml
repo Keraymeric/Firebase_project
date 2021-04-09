@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreditsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="22dp"
+        android:padding="10dp"
+        android:text="Cette application est issue de la collaboration entre l'UFOLEP 59-62 et l'IMT-Lille-Douai à l'initiative de M. Rémy Pinot, et conçue pas Arassus Aurélien et Rouget Florian"/>
+
+</LinearLayout>

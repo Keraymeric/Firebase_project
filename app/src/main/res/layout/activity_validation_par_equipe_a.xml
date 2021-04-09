@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ValidationParEquipeA">
+
+    <TextView
+        android:id="@+id/textViewValidation17"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Composition de l'équipe B" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewValidation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="N°" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumB15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewValidation2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="NOMS - Prénoms" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNomB15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewValidation8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="N° Licence" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewValidationNumLicenceB15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_border"
+                android:padding="2dp"
+                android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewValidationSignatureEquipeA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonSignatureValidationParA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signature du Capitaine de l'équipe A" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRetourFeuilledeMatch"
+        android:text="Retour feuille de match"/>
+</LinearLayout>
