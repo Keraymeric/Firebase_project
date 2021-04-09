@@ -15,14 +15,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_EQUIPE = "equipe";
     private static final String TABLE_JOUEUR = "joueur";
+
     private static final String EQUIPE_KEY_ID = "id_equipe";
     private static final String EQUIPE_KEY_NOM = "nom_equipe";
+    private static final String EQUIPE_KEY_NIVEAU = "niveau_equipe";
+
     private static final String JOUEUR_KEY_ID = "id";
     private static final String JOUEUR_KEY_NOM = "nom_joueur";
     private static final String JOUEUR_KEY_PRENOM = "prenom_joueur";
     private static final String JOUEUR_KEY_NUM_LICENCE = "num_licence_joueur";
     private static final String JOUEUR_KEY_EQUIPE = "id_equipe_joueur";
-    private static final String EQUIPE_KEY_NIVEAU = "niveau_equipe";
+
 
     //creation table équipe
     private static final String CREATE_TABLE_EQUIPE = "CREATE TABLE "

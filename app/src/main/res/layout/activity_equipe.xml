@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".EquipeActivity">
+
     <Button
         android:id="@+id/buttonFirebase"
         android:text="Importer les équipes"
@@ -17,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ajouter une équipe" />
-
 
     <ListView
         android:id="@+id/lvEquipe"

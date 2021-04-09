@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,7 +50,6 @@ public class EquipeActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseReference = firebaseDatabase.getReference().child("Equipe");
-
         equipeArrayList = databaseHelper.getAllEquipe();
         equipeAdapter = new EquipeAdapter(this, equipeArrayList);
         listView.setAdapter(equipeAdapter);
@@ -64,14 +66,31 @@ public class EquipeActivity extends AppCompatActivity {
         buttonImportFirebase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
                 databaseHelper.deleteAllEquipe();
-                equipeArrayList = databaseHelper.getAllEquipe();
-                equipeAdapter = new EquipeAdapter(EquipeActivity.this, equipeArrayList);
-                listView.setAdapter(equipeAdapter);
+                equipeArrayList.clear();
+                firebaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        List<String> keys= new ArrayList<>();
+                        for (DataSnapshot keyNode : snapshot.getChildren()){
+                            keys.add(keyNode.getKey());
+                            Equipe equipe = keyNode.getValue(Equipe.class);
 
+                            databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
+                            equipeAdapter.notifyDataSetChanged();
+                        }
+                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+                listView.setAdapter(equipeAdapter);
             }
         });
+
 
         buttonAjouterEquipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +115,7 @@ public class EquipeActivity extends AppCompatActivity {
                                 Intent intent = new Intent(EquipeActivity.this, UpdateDeleteEquipeActivity.class);
                                 intent.putExtra("equipe", equipe);
                                 startActivity(intent);
+
                             }
                         })
                         .setNegativeButton("Annuler",
@@ -108,8 +128,6 @@ public class EquipeActivity extends AppCompatActivity {
                 // create an alert dialog
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
-
-                equipeAdapter.notifyDataSetChanged(); //TEST
             }
         });
 
@@ -152,10 +170,26 @@ public class EquipeActivity extends AppCompatActivity {
         buttonImportFirebase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
                 databaseHelper.deleteAllEquipe();
-                equipeArrayList = databaseHelper.getAllEquipe();
-                equipeAdapter = new EquipeAdapter(EquipeActivity.this, equipeArrayList);
+                equipeArrayList.clear();
+                firebaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        List<String> keys= new ArrayList<>();
+                        for (DataSnapshot keyNode : snapshot.getChildren()){
+                            keys.add(keyNode.getKey());
+                            Equipe equipe = keyNode.getValue(Equipe.class);
+                            databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
+                            equipeAdapter.notifyDataSetChanged();
+                        }
+                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                });
                 listView.setAdapter(equipeAdapter);
             }
         });
@@ -182,6 +216,7 @@ public class EquipeActivity extends AppCompatActivity {
                                 Intent intent = new Intent(EquipeActivity.this, UpdateDeleteEquipeActivity.class);
                                 intent.putExtra("equipe", equipe);
                                 startActivity(intent);
+
                             }
                         })
                         .setNegativeButton("Annuler",
@@ -194,8 +229,6 @@ public class EquipeActivity extends AppCompatActivity {
                 // create an alert dialog
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
-
-                equipeAdapter.notifyDataSetChanged(); //TEST
             }
         });
 
@@ -238,10 +271,26 @@ public class EquipeActivity extends AppCompatActivity {
         buttonImportFirebase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
                 databaseHelper.deleteAllEquipe();
-                equipeArrayList = databaseHelper.getAllEquipe();
-                equipeAdapter = new EquipeAdapter(EquipeActivity.this, equipeArrayList);
+                equipeArrayList.clear();
+                firebaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        List<String> keys= new ArrayList<>();
+                        for (DataSnapshot keyNode : snapshot.getChildren()){
+                            keys.add(keyNode.getKey());
+                            Equipe equipe = keyNode.getValue(Equipe.class);
+                            databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
+                            equipeAdapter.notifyDataSetChanged();
+                        }
+                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                });
                 listView.setAdapter(equipeAdapter);
             }
         });
@@ -282,8 +331,6 @@ public class EquipeActivity extends AppCompatActivity {
                 // create an alert dialog
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
-
-                equipeAdapter.notifyDataSetChanged(); //TEST
             }
         });
 
