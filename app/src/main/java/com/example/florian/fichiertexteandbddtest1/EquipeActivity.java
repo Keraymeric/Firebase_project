@@ -107,9 +107,6 @@ public class EquipeActivity extends AppCompatActivity {
                         .setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 databaseHelper.addEquipe(editTextNomAjouterEquipeDialog.getText().toString(),editTextNiveauAjouterEquipeDialog.getText().toString());
-                                /*Intent intent = getIntent();
-                                finish();
-                                startActivity(intent);*/
                                 Equipe equipe = databaseHelper.getLastEquipeInsert();
                                 firebaseReference.child(String.valueOf(equipe.getId())).setValue(equipe);
                                 Intent intent = new Intent(EquipeActivity.this, UpdateDeleteEquipeActivity.class);
