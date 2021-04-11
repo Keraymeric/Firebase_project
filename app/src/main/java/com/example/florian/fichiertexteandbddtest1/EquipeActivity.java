@@ -87,7 +87,11 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                firebaseReference.child("Delete").setValue("Delete");
+                DatabaseReference mDelete = FirebaseDatabase.getInstance().getReference().child("Equipe").child("Delete");
+                mDelete.removeValue();
                 listView.setAdapter(equipeAdapter);
+
             }
         });
 
@@ -187,6 +191,9 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                firebaseReference.child("Delete").setValue("Delete");
+                DatabaseReference mDelete = FirebaseDatabase.getInstance().getReference().child("Equipe").child("Delete");
+                mDelete.removeValue();
                 listView.setAdapter(equipeAdapter);
             }
         });
@@ -288,6 +295,9 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                firebaseReference.child("Delete").setValue("Delete");
+                DatabaseReference mDelete = FirebaseDatabase.getInstance().getReference().child("Equipe").child("Delete");
+                mDelete.removeValue();
                 listView.setAdapter(equipeAdapter);
             }
         });
