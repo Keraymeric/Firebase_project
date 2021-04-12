@@ -10,13 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UpdateDeleteEquipeActivity extends AppCompatActivity {
 
@@ -28,7 +34,7 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
     private ArrayList<Joueur> joueurArrayList;
     private JoueurAdapteur joueurAdapter;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference firebaseReference;
+    private DatabaseReference firebaseReference,firebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,7 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
         equipe = (Equipe) intent.getSerializableExtra("equipe");
 
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseRef= firebaseDatabase.getReference().child("Equipe").child(String.valueOf(equipe.getId()));
         firebaseReference = firebaseDatabase.getReference().child("Joueurs").child(String.valueOf(equipe.getId()));
         databaseHelper = new DatabaseHelper(this);
 
@@ -53,6 +60,7 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
 
         //concernant la liste view de joueurs
         listView = (ListView)findViewById(R.id.lv_joueur);
+
         joueurArrayList = databaseHelper.getAllJoueurOfEquipe(equipe.getId());
         joueurAdapter = new JoueurAdapteur(this, joueurArrayList);
         listView.setAdapter(joueurAdapter);
@@ -68,10 +76,13 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
         });
 
 
+
         buttonModifierEquipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseHelper.updateEquipe(equipe.getId(), editTextNomEquipe.getText().toString());
+                databaseHelper.updateEquipe(equipe.getId(), editTextNomEquipe.getText().toString(),editTextNiveauEquipe.getText().toString());
+                firebaseRef.child("niveau").setValue(editTextNiveauEquipe.getText().toString());
+                firebaseRef.child("nom").setValue(editTextNomEquipe.getText().toString());
                 Toast.makeText(UpdateDeleteEquipeActivity.this, "Succès de la mise à jour", Toast.LENGTH_SHORT).show();
                 //Intent intent = getIntent();
                 //startActivity(intent);
@@ -109,6 +120,8 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
                         .setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 databaseHelper.deleteEquipe(equipe.getId());
+                                firebaseRef.removeValue();
+                                firebaseReference.removeValue();
                                 Toast.makeText(UpdateDeleteEquipeActivity.this, "L'équipe à bien été supprimée", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(UpdateDeleteEquipeActivity.this,EquipeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

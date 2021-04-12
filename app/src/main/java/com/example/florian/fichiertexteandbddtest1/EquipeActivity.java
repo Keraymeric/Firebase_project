@@ -81,7 +81,6 @@ public class EquipeActivity extends AppCompatActivity {
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
                             equipeAdapter.notifyDataSetChanged();
                         }
-                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -89,6 +88,29 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                firebaseReference2.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<String> keys = new ArrayList<>();
+                            for (DataSnapshot firstLevelSnapshot : task.getResult().getChildren()) {
+                                for (DataSnapshot secondLevelSnapshot : firstLevelSnapshot.getChildren()) {
+                                    String key = secondLevelSnapshot.getKey();
+                                    keys.add(key);
+                                    Joueur joueur = secondLevelSnapshot.getValue(Joueur.class);
+                                    databaseHelper.addJoueur(
+                                            joueur.getNom_joueur(),
+                                            joueur.getPrenom_joueur(),
+                                            joueur.getNum_licence_joueur(),
+                                            joueur.getId_equipe_joueur()
+                                    );
+                                }
+                            }
+                        } else {
+                        }
+                    }
+                });
+
                 equipeAdapter.notifyDataSetChanged();
                 Intent intent = new Intent(EquipeActivity.this,ImportActivity.class);
                 startActivity(intent);
@@ -181,7 +203,6 @@ public class EquipeActivity extends AppCompatActivity {
                             Equipe equipe = keyNode.getValue(Equipe.class);
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
                         }
-                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -189,9 +210,32 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
+                firebaseReference2.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<String> keys = new ArrayList<>();
+                            for (DataSnapshot firstLevelSnapshot : task.getResult().getChildren()) {
+                                for (DataSnapshot secondLevelSnapshot : firstLevelSnapshot.getChildren()) {
+                                    String key = secondLevelSnapshot.getKey();
+                                    keys.add(key);
+                                    Joueur joueur = secondLevelSnapshot.getValue(Joueur.class);
+                                    databaseHelper.addJoueur(
+                                            joueur.getNom_joueur(),
+                                            joueur.getPrenom_joueur(),
+                                            joueur.getNum_licence_joueur(),
+                                            joueur.getId_equipe_joueur()
+                                    );
+                                }
+                            }
+                        } else {
+                        }
+                    }
+                });
                 equipeAdapter.notifyDataSetChanged();
                 Intent intent = new Intent(EquipeActivity.this,ImportActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -284,12 +328,33 @@ public class EquipeActivity extends AppCompatActivity {
 
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
                         }
-                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+                firebaseReference2.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<String> keys = new ArrayList<>();
+                            for (DataSnapshot firstLevelSnapshot : task.getResult().getChildren()) {
+                                for (DataSnapshot secondLevelSnapshot : firstLevelSnapshot.getChildren()) {
+                                    String key = secondLevelSnapshot.getKey();
+                                    keys.add(key);
+                                    Joueur joueur = secondLevelSnapshot.getValue(Joueur.class);
+                                    databaseHelper.addJoueur(
+                                            joueur.getNom_joueur(),
+                                            joueur.getPrenom_joueur(),
+                                            joueur.getNum_licence_joueur(),
+                                            joueur.getId_equipe_joueur()
+                                    );
+                                }
+                            }
+                        } else {
+                        }
                     }
                 });
                 equipeAdapter.notifyDataSetChanged();

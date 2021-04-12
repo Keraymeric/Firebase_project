@@ -100,10 +100,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // supprimer toute les équipes
 
     //update une équipe
-    public void updateEquipe(int id, String nom){ //IL FAUDRA VERIFIER QU'ELLE EST PAS UTILISÉ DANS LA TABLE JOUEUR ?
+    public void updateEquipe(int id, String nom_equipe,String niveau_equipe){ //IL FAUDRA VERIFIER QU'ELLE EST PAS UTILISÉ DANS LA TABLE JOUEUR ?
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(EQUIPE_KEY_NOM, nom);
+        values.put(EQUIPE_KEY_NOM, nom_equipe);
+        values.put(EQUIPE_KEY_NIVEAU,niveau_equipe);
         db.update(TABLE_EQUIPE, values, EQUIPE_KEY_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
