@@ -29,13 +29,13 @@ import java.util.List;
 
 public class EquipeActivity extends AppCompatActivity {
 
-    private Button buttonAjouterEquipe, buttonRetourAccueil,buttonImportFirebase;
+    private Button buttonAjouterEquipe, buttonRetourAccueil,buttonImportFirebase,buttonAfficherFirebase;
     private ListView listView;
     private ArrayList<Equipe> equipeArrayList;
     private EquipeAdapter equipeAdapter;
     private DatabaseHelper databaseHelper;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference firebaseReference;
+    private DatabaseReference firebaseReference, firebaseReference2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,8 @@ public class EquipeActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseReference = firebaseDatabase.getReference().child("Equipe");
+        firebaseReference2 = firebaseDatabase.getReference().child("Joueurs");
+
         equipeArrayList = databaseHelper.getAllEquipe();
         equipeAdapter = new EquipeAdapter(this, equipeArrayList);
         listView.setAdapter(equipeAdapter);
@@ -79,7 +81,7 @@ public class EquipeActivity extends AppCompatActivity {
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
                             equipeAdapter.notifyDataSetChanged();
                         }
-                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -87,14 +89,11 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
-                firebaseReference.child("Delete").setValue("Delete");
-                DatabaseReference mDelete = FirebaseDatabase.getInstance().getReference().child("Equipe").child("Delete");
-                mDelete.removeValue();
-                listView.setAdapter(equipeAdapter);
-
+                equipeAdapter.notifyDataSetChanged();
+                Intent intent = new Intent(EquipeActivity.this,ImportActivity.class);
+                startActivity(intent);
             }
         });
-
 
         buttonAjouterEquipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,9 +180,8 @@ public class EquipeActivity extends AppCompatActivity {
                             keys.add(keyNode.getKey());
                             Equipe equipe = keyNode.getValue(Equipe.class);
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
-                            equipeAdapter.notifyDataSetChanged();
                         }
-                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
+                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -191,10 +189,9 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
-                firebaseReference.child("Delete").setValue("Delete");
-                DatabaseReference mDelete = FirebaseDatabase.getInstance().getReference().child("Equipe").child("Delete");
-                mDelete.removeValue();
-                listView.setAdapter(equipeAdapter);
+                equipeAdapter.notifyDataSetChanged();
+                Intent intent = new Intent(EquipeActivity.this,ImportActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -206,8 +203,8 @@ public class EquipeActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EquipeActivity.this);
                 alertDialogBuilder.setView(promptView);
 
-                final EditText editTextNomAjouterEquipeDialog = (EditText) promptView.findViewById(R.id.editTextNomAjouterEquipeDialog);
-                final EditText editTextNiveauAjouterEquipeDialog = (EditText) promptView.findViewById(R.id.editTextNiveau);
+                final EditText editTextNomAjouterEquipeDialog =  promptView.findViewById(R.id.editTextNomAjouterEquipeDialog);
+                final EditText editTextNiveauAjouterEquipeDialog =  promptView.findViewById(R.id.editTextNiveau);
 
                 alertDialogBuilder.setCancelable(false)
                         .setPositiveButton("Valider", new DialogInterface.OnClickListener() {
@@ -284,8 +281,8 @@ public class EquipeActivity extends AppCompatActivity {
                         for (DataSnapshot keyNode : snapshot.getChildren()){
                             keys.add(keyNode.getKey());
                             Equipe equipe = keyNode.getValue(Equipe.class);
+
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
-                            equipeAdapter.notifyDataSetChanged();
                         }
                         Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
                     }
@@ -295,10 +292,9 @@ public class EquipeActivity extends AppCompatActivity {
                         Toast.makeText(EquipeActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 });
-                firebaseReference.child("Delete").setValue("Delete");
-                DatabaseReference mDelete = FirebaseDatabase.getInstance().getReference().child("Equipe").child("Delete");
-                mDelete.removeValue();
-                listView.setAdapter(equipeAdapter);
+                equipeAdapter.notifyDataSetChanged();
+                Intent intent = new Intent(EquipeActivity.this,ImportActivity.class);
+                startActivity(intent);
             }
         });
 

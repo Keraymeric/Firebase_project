@@ -31,11 +31,11 @@ public class UpdateDeleteJoueurActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         editTextNomJoueur = (EditText)findViewById(R.id.editTextNomJoueur);
-        editTextNomJoueur.setText(joueur.getNom());
+        editTextNomJoueur.setText(joueur.getNom_joueur());
         editTextPrenomJoueur = (EditText)findViewById(R.id.editTextPrenomJoueur);
-        editTextPrenomJoueur.setText(joueur.getPrenom());
+        editTextPrenomJoueur.setText(joueur.getPrenom_joueur());
         editTextNumLicenceJoueur = (EditText)findViewById(R.id.editTextNumLicenceJoueur);
-        editTextNumLicenceJoueur.setText(joueur.getNum_licence());
+        editTextNumLicenceJoueur.setText(joueur.getNum_licence_joueur());
         buttonModifierJoueur = (Button)findViewById(R.id.buttonModifierJoueur);
         buttonSupprimerJoueur = (Button)findViewById(R.id.buttonSupprimerJoueur);
         buttonRetourUpdateDeleteEquipe = (Button)findViewById(R.id.buttonRetourUpdateDeleteEquipe);

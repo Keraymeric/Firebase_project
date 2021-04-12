@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".EquipeActivity" />
+        <activity android:name=".ImportActivity"/>
         <activity android:name=".UpdateDeleteEquipeActivity" />
         <activity android:name=".UpdateDeleteJoueurActivity" />
         <activity android:name=".MatchActivity" />

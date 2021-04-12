@@ -56,9 +56,9 @@ public class JoueurAdapteur extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        holder.tvnom.setText(""+joueurArrayList.get(position).getNom());
-        holder.tvprenom.setText(""+joueurArrayList.get(position).getPrenom());
-        holder.tvnumLicence.setText(""+joueurArrayList.get(position).getNum_licence());
+        holder.tvnom.setText(""+joueurArrayList.get(position).getNom_joueur());
+        holder.tvprenom.setText(""+joueurArrayList.get(position).getPrenom_joueur());
+        holder.tvnumLicence.setText(""+joueurArrayList.get(position).getNum_licence_joueur());
 
         return convertView;
     }

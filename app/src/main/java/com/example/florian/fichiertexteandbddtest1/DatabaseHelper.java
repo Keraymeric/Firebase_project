@@ -38,6 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + JOUEUR_KEY_NOM + " TEXT,"
             + JOUEUR_KEY_PRENOM + " TEXT,"
             + JOUEUR_KEY_EQUIPE + " INT,"
+            + JOUEUR_KEY_NUM_LICENCE + " INT,"
             + "FOREIGN KEY(" + JOUEUR_KEY_EQUIPE + ") REFERENCES " + TABLE_EQUIPE + "(id)"
             + ");";
 
@@ -72,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(EQUIPE_KEY_NOM, nom_equipe);
         values.put(EQUIPE_KEY_NIVEAU,niveau_equipe);
         db.insert(TABLE_EQUIPE, null, values);
-        db.close();
+
     }
 
     //obtenir la liste des équipes
@@ -93,8 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
 
         }
-        c.close();
-        db.close();
+
         return equipeArrayList;
     }
     // supprimer toute les équipes
@@ -116,13 +116,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             this.deleteJoueur(lesJoueursDeLequipe.get(i).getId());
         }
         db.delete(TABLE_EQUIPE, EQUIPE_KEY_ID + " = ?",new String[]{String.valueOf(id)});
-        db.close();
+
     }
     public void deleteAllEquipe(){//Supprimer tous et recrée les tables
       SQLiteDatabase db = this.getWritableDatabase();
-      db.delete(TABLE_JOUEUR,null,null);
-      db.delete(TABLE_EQUIPE,null,null);
-        db.close();
+        db.execSQL("DROP TABLE IF EXISTS '" + TABLE_EQUIPE + "'");
+        db.execSQL("DROP TABLE IF EXISTS '" + TABLE_JOUEUR + "'");
+        db.execSQL(CREATE_TABLE_EQUIPE);
+        db.execSQL(CREATE_TABLE_JOUEUR);
+
     }
     public Equipe getEquipeById(int id){
         String selectQuery = "SELECT * FROM " + TABLE_EQUIPE + " WHERE " + EQUIPE_KEY_ID + " = " + id;
@@ -132,8 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Equipe equipe = new Equipe();
         equipe.setId(c.getInt(c.getColumnIndex(EQUIPE_KEY_ID)));
         equipe.setNom(c.getString(c.getColumnIndex(EQUIPE_KEY_NOM)));
-        db.close();
-        c.close();
+
         return equipe;
     }
 
@@ -146,17 +147,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         equipe.setId(c.getInt(c.getColumnIndex(EQUIPE_KEY_ID)));
         equipe.setNom(c.getString(c.getColumnIndex(EQUIPE_KEY_NOM)));
         equipe.setNiveau(c.getString(c.getColumnIndex(EQUIPE_KEY_NIVEAU)));
-        c.close();
-        db.close();
+       ;
         return equipe;
     }
-
+    public Joueur getLastJoueurInsert(int id_equipe){
+        String selectQuery = "SELECT * FROM " + TABLE_JOUEUR + " WHERE " + JOUEUR_KEY_EQUIPE + " = " + id_equipe + " ORDER BY " + JOUEUR_KEY_ID + " DESC LIMIT 1";
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery,null);
+        c.moveToFirst();
+        Joueur joueur = new Joueur();
+        joueur.setNom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
+        joueur.setPrenom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
+        joueur.setId(c.getInt(c.getColumnIndex(JOUEUR_KEY_ID)));
+        joueur.setNum_licence_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
+        joueur.setId_equipe_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_EQUIPE)));
+        return joueur;
+    }
     //=====================================
     //pour les joueurs
     //=====================================
 
     //ajouter un joueur
-    public void addJoueur(String nom, String prenom, String numLicence, int id_equipe){
+    public void addJoueur(String nom, String prenom, int numLicence, int id_equipe){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(JOUEUR_KEY_NOM, nom);
@@ -164,7 +176,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(JOUEUR_KEY_NUM_LICENCE, numLicence);
         values.put(JOUEUR_KEY_EQUIPE, id_equipe);
         db.insert(TABLE_JOUEUR, null, values);
-        db.close();
+
     }
 
     //Obtenir tous les joueurs d'une équipe
@@ -179,17 +191,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do{
                 Joueur joueur = new Joueur();
                 joueur.setId(c.getInt(c.getColumnIndex(JOUEUR_KEY_ID)));
-                joueur.setNom(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
-                joueur.setPrenom(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
-                joueur.setNum_licence(c.getString(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
+                joueur.setNom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
+                joueur.setPrenom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
+                joueur.setNum_licence_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
                 //Y a-t-il besoin de faire un champs id_equipe dans joueur ?
 
                 joueurArrayList.add(joueur);
 
             } while (c.moveToNext());
         }
-        db.close();
-        c.close();
+
         return joueurArrayList;
     }
 
@@ -201,14 +212,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(JOUEUR_KEY_PRENOM, prenom);
         values.put(JOUEUR_KEY_NUM_LICENCE, numLicence);
         db.update(TABLE_JOUEUR, values, JOUEUR_KEY_ID + " = ?", new String[]{String.valueOf(id)});
-        db.close();
+
     }
 
     //supprimer un joueur
     public void deleteJoueur(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_JOUEUR, JOUEUR_KEY_ID + " = ?",new String[]{String.valueOf(id)});
-        db.close();
+
     }
 
 
@@ -219,12 +230,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Joueur joueur = new Joueur();
         joueur.setId(c.getInt(c.getColumnIndex(JOUEUR_KEY_ID)));
-        joueur.setNom(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
-        joueur.setPrenom(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
-        joueur.setNum_licence(c.getString(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
+        joueur.setNom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
+        joueur.setPrenom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
+        joueur.setNum_licence_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
         //joueur.setEquipeId(c.getString(c.getColumnIndex(JOUEUR_KEY_EQUIPE)));
-        c.close();
-        db.close();
+
         return joueur;
     }
 

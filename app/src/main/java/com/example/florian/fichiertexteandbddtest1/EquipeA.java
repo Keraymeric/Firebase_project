@@ -95,7 +95,7 @@ public class EquipeA extends AppCompatActivity {
 
         final ArrayList<Joueur> lesJoueurs = databaseHelper.getAllJoueurOfEquipe(Integer.parseInt(loadPreparatif.getString("idEquipeA", "")));
         Joueur joueurVide = new Joueur(); //ajout d'une équipe vide pour le cas où l'équipe n'est pas encore choisie
-        joueurVide.setNom(""); joueurVide.setPrenom(""); joueurVide.setNum_licence(""); joueurVide.setId(-1);
+        joueurVide.setNom_joueur(""); joueurVide.setPrenom_joueur(""); joueurVide.setNum_licence_joueur(0); joueurVide.setId(-1);
         lesJoueurs.add(0, joueurVide);
 
         final JoueurAdapteur joueurAdapter = new JoueurAdapteur(this, lesJoueurs);
@@ -211,50 +211,50 @@ public class EquipeA extends AppCompatActivity {
                 editorEquipeA.putString("numA14", numA14.getText().toString());
                 editorEquipeA.putString("numA15", numA15.getText().toString());*/
 
-                editorEquipeA.putString("nomA1", lesJoueurs.get(nomA1.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA1.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA1", lesJoueurs.get(nomA1.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA1", lesJoueurs.get(nomA1.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA1.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA1", String.valueOf(lesJoueurs.get(nomA1.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA1", "" +  lesJoueurs.get(nomA1.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA2", lesJoueurs.get(nomA2.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA2.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA2", lesJoueurs.get(nomA2.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA2", lesJoueurs.get(nomA2.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA2.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA2", String.valueOf(lesJoueurs.get(nomA2.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA2", "" +  lesJoueurs.get(nomA2.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA3", lesJoueurs.get(nomA3.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA3.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA3", lesJoueurs.get(nomA3.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA3", lesJoueurs.get(nomA3.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA3.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA3", String.valueOf(lesJoueurs.get(nomA3.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA3", "" +  lesJoueurs.get(nomA3.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA4", lesJoueurs.get(nomA4.getSelectedItemPosition()).getNom()  + " " + lesJoueurs.get(nomA4.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA4", lesJoueurs.get(nomA4.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA4", lesJoueurs.get(nomA4.getSelectedItemPosition()).getNom_joueur()  + " " + lesJoueurs.get(nomA4.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA4", String.valueOf(lesJoueurs.get(nomA4.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA4", "" +  lesJoueurs.get(nomA4.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA5", lesJoueurs.get(nomA5.getSelectedItemPosition()).getNom()  + " " + lesJoueurs.get(nomA5.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA5", lesJoueurs.get(nomA5.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA5", lesJoueurs.get(nomA5.getSelectedItemPosition()).getNom_joueur()  + " " + lesJoueurs.get(nomA5.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA5", String.valueOf(lesJoueurs.get(nomA5.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA5", "" +  lesJoueurs.get(nomA5.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA6", lesJoueurs.get(nomA6.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA6.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA6", lesJoueurs.get(nomA6.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA6", lesJoueurs.get(nomA6.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA6.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA6", String.valueOf(lesJoueurs.get(nomA6.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA6", "" +  lesJoueurs.get(nomA6.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA7", lesJoueurs.get(nomA7.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA7.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA7", lesJoueurs.get(nomA7.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA7", lesJoueurs.get(nomA7.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA7.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA7", String.valueOf(lesJoueurs.get(nomA7.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA7", "" +  lesJoueurs.get(nomA7.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA8", lesJoueurs.get(nomA8.getSelectedItemPosition()).getNom()  + " " + lesJoueurs.get(nomA8.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA8", lesJoueurs.get(nomA8.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA8", lesJoueurs.get(nomA8.getSelectedItemPosition()).getNom_joueur()  + " " + lesJoueurs.get(nomA8.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA8", String.valueOf(lesJoueurs.get(nomA8.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA8", "" +  lesJoueurs.get(nomA8.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA9", lesJoueurs.get(nomA9.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA9.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA9", lesJoueurs.get(nomA9.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA9", lesJoueurs.get(nomA9.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA9.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA9", String.valueOf(lesJoueurs.get(nomA9.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA9", "" +  lesJoueurs.get(nomA9.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA10", lesJoueurs.get(nomA10.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA10.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA10", lesJoueurs.get(nomA10.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA10", lesJoueurs.get(nomA10.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA10.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA10", String.valueOf(lesJoueurs.get(nomA10.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA10", "" +  lesJoueurs.get(nomA10.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA11", lesJoueurs.get(nomA11.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA11.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA11", lesJoueurs.get(nomA11.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA11", lesJoueurs.get(nomA11.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA11.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA11", String.valueOf(lesJoueurs.get(nomA11.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA11", "" +  lesJoueurs.get(nomA11.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA12", lesJoueurs.get(nomA12.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA12.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA12", lesJoueurs.get(nomA12.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA12", lesJoueurs.get(nomA12.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA12.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA12", String.valueOf(lesJoueurs.get(nomA12.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA12", "" +  lesJoueurs.get(nomA12.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA13", lesJoueurs.get(nomA13.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA13.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA13", lesJoueurs.get(nomA13.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA13", lesJoueurs.get(nomA13.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA13.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA13", String.valueOf(lesJoueurs.get(nomA13.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA13", "" +  lesJoueurs.get(nomA13.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA14", lesJoueurs.get(nomA14.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA14.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA14", lesJoueurs.get(nomA14.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA14", lesJoueurs.get(nomA14.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA14.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA14", String.valueOf(lesJoueurs.get(nomA14.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA14", "" +  lesJoueurs.get(nomA14.getSelectedItemPosition()).getId());
-                editorEquipeA.putString("nomA15", lesJoueurs.get(nomA15.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(nomA15.getSelectedItemPosition()).getPrenom());
-                editorEquipeA.putString("numLicenceA15", lesJoueurs.get(nomA15.getSelectedItemPosition()).getNum_licence());
+                editorEquipeA.putString("nomA15", lesJoueurs.get(nomA15.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(nomA15.getSelectedItemPosition()).getPrenom_joueur());
+                editorEquipeA.putString("numLicenceA15", String.valueOf(lesJoueurs.get(nomA15.getSelectedItemPosition()).getNum_licence_joueur()));
                 editorEquipeA.putString("idA15", "" +  lesJoueurs.get(nomA15.getSelectedItemPosition()).getId());
 
                 editorEquipeA.commit();
@@ -263,8 +263,8 @@ public class EquipeA extends AppCompatActivity {
                 SharedPreferences saveApprobation = getSharedPreferences("approbation",0);
                 SharedPreferences.Editor editorApprobation = saveApprobation.edit();
                 editorApprobation.putString("idCapitaineA","" + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getId());
-                editorApprobation.putString("nomCapitaineA","" + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getNom() + " " + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getPrenom());
-                editorApprobation.putString("numLicenceCapitaineA", "" + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getNum_licence());
+                editorApprobation.putString("nomCapitaineA","" + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getNom_joueur() + " " + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getPrenom_joueur());
+                editorApprobation.putString("numLicenceCapitaineA", "" + lesJoueurs.get(capitaineEquipeA.getSelectedItemPosition()).getNum_licence_joueur());
 
                 editorApprobation.commit();
 
@@ -334,7 +334,7 @@ public class EquipeA extends AppCompatActivity {
 
                                 SharedPreferences loadPreparatif = getSharedPreferences("preparatif", 0);
                                 String idEquipeA = loadPreparatif.getString("idEquipeA", "");
-                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), editTextNumLicenceAjouterJoueurDialog.getText().toString(), Integer.parseInt(idEquipeA));
+                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), Integer.parseInt(editTextNumLicenceAjouterJoueurDialog.getText().toString()), Integer.parseInt(idEquipeA));
 
                                 //Faire ICI Pareil que valider
                                 buttonEquipeAValider.performClick();

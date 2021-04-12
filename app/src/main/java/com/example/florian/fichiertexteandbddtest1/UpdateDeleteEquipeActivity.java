@@ -13,6 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class UpdateDeleteEquipeActivity extends AppCompatActivity {
@@ -24,23 +27,26 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Joueur> joueurArrayList;
     private JoueurAdapteur joueurAdapter;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference firebaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delete_equipe);
-
         Intent intent = getIntent();
         equipe = (Equipe) intent.getSerializableExtra("equipe");
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseReference = firebaseDatabase.getReference().child("Joueurs").child(String.valueOf(equipe.getId()));
         databaseHelper = new DatabaseHelper(this);
 
-        editTextNiveauEquipe=(EditText)findViewById(R.id.editTextNiveauEquipe);
-        editTextNomEquipe = (EditText)findViewById(R.id.editTextNomEquipe);
-        buttonModifierEquipe = (Button)findViewById(R.id.buttonModifierEquipe);
-        buttonSupprimerEquipe = (Button)findViewById(R.id.buttonSupprimerEquipe);
-        buttonAjouterJoueurEquipe = (Button)findViewById(R.id.buttonAjouterJoueurEquipe);
-        buttonRetourEquipe = (Button)findViewById(R.id.buttonRetourEquipe);
+        editTextNiveauEquipe=findViewById(R.id.editTextNiveauEquipe);
+        editTextNomEquipe = findViewById(R.id.editTextNomEquipe);
+        buttonModifierEquipe = findViewById(R.id.buttonModifierEquipe);
+        buttonSupprimerEquipe = findViewById(R.id.buttonSupprimerEquipe);
+        buttonAjouterJoueurEquipe = findViewById(R.id.buttonAjouterJoueurEquipe);
+        buttonRetourEquipe = findViewById(R.id.buttonRetourEquipe);
 
         editTextNomEquipe.setText(equipe.getNom());
         editTextNiveauEquipe.setText(equipe.getNiveau());
@@ -143,7 +149,9 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 //resultText.setText("Hello, " + editText.getText());
                                 //ON AJOUTE LE JOUEUR DANS LA BASE DE DONNEES //il faut lier le joueur avec l'équipe !
-                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), editTextNumLicenceAjouterJoueurDialog.getText().toString(), equipe.getId());
+                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), Integer.parseInt(editTextNumLicenceAjouterJoueurDialog.getText().toString()), equipe.getId());
+                                Joueur joueur = databaseHelper.getLastJoueurInsert(equipe.getId());
+                                firebaseReference.child(String.valueOf(joueur.getId())).setValue(joueur);
                                 //IL FAUT METTRE A JOUR L'ADAPTER
                                 //adapter.notifyDataSetChanged(); ?
                                 //joueurAdapter.notifyDataSetChanged(); //TEST

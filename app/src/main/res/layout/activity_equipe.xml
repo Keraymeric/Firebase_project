@@ -9,10 +9,10 @@
 
     <Button
         android:id="@+id/buttonFirebase"
-        android:text="Importer les équipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:text="Importer les données" />
+
     <Button
         android:id="@+id/buttonAjouterEquipe"
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:id="@+id/lvEquipe"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/buttonRetourAccueil"
