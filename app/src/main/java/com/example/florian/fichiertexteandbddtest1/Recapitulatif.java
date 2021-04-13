@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 
@@ -326,6 +337,10 @@ public class Recapitulatif extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recapitulatif);
 
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        final StorageReference storageRef = storage.getReference();
+
+
         //préparatif
         textViewDate = (TextView)findViewById(R.id.textViewDate);
         textViewCompetition = (TextView)findViewById(R.id.textViewCompetition);
@@ -334,11 +349,14 @@ public class Recapitulatif extends AppCompatActivity {
         textViewHeureDebut = (TextView)findViewById(R.id.textViewHeureDebut);
         textViewHeureFin = (TextView)findViewById(R.id.textViewHeureFin);
         final SharedPreferences loadPreparatif = getSharedPreferences("preparatif",0);
-        String date = loadPreparatif.getString("date", "");
+        final String date = loadPreparatif.getString("date", "");
         String competition = loadPreparatif.getString("competition", "");
         String categorie = loadPreparatif.getString("categorie", "");
         String lieu = loadPreparatif.getString("lieu", "");
         String heureDebut = loadPreparatif.getString("heureDebut", "");
+        final String nomEquipeA = loadPreparatif.getString("nomEquipeA", "");
+        final String nomEquipeB = loadPreparatif.getString("nomEquipeB", "");
+
         textViewDate.setText("Date : " + date);
         textViewCompetition.setText("Compétition : " + competition);
         textViewCategorie.setText("Catégorie : " + categorie);
@@ -973,7 +991,7 @@ public class Recapitulatif extends AppCompatActivity {
                 String nomEB = loadPreparatif.getString("nomEquipeB", "equipeB");
                 nomEB = nomEB.replace(" ", "");
                 nomEB = nomEB.replace("/", "");
-                String pdfName = nomEA + "-" + nomEB;
+                String pdfName = nomEA +  "-" + nomEB +"  date:" + date + ".pdf" ;;
                 CreatePDF.createPdf(pdfName, loadPreparatif, loadEquipeA, loadEquipeB, loadSet1, loadSet2, loadSet3, loadSet4, loadSet5, loadResultat, loadApprobation, Recapitulatif.this);
                 Toast.makeText(Recapitulatif.this, "Le PDF à bien été crée", Toast.LENGTH_SHORT).show();
             }
@@ -984,11 +1002,33 @@ public class Recapitulatif extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //on creer le PDF avant de l'envoyer
-                CreatePDF.createPdf("monPDF", loadPreparatif, loadEquipeA, loadEquipeB, loadSet1, loadSet2, loadSet3, loadSet4, loadSet5, loadResultat, loadApprobation, Recapitulatif.this);
+                final String filename= nomEquipeA +  "-" + nomEquipeB +"date:" + date + ".pdf" ;
+                CreatePDF.createPdf(filename, loadPreparatif, loadEquipeA, loadEquipeB, loadSet1, loadSet2, loadSet3, loadSet4, loadSet5, loadResultat, loadApprobation, Recapitulatif.this);
 
-                String filename="monPDF.pdf";
                 File filelocation = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), filename);
                 Uri path = Uri.fromFile(filelocation);
+
+                storageRef.child("Match").child(filename).putFile(path)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                        FirebaseDatabase database= FirebaseDatabase.getInstance();
+                        DatabaseReference reference = database.getReference();
+                        reference.child("Match Url").child(filename).setValue(url);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Recapitulatif.this,"Erreur lors du téléchargement",Toast.LENGTH_LONG);
+                    }
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+                    }
+                });
+
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 // set the type to 'email'
                 emailIntent .setType("vnd.android.cursor.dir/email");

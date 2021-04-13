@@ -50,10 +50,10 @@ public class UpdateDeleteJoueurActivity extends AppCompatActivity {
         buttonModifierJoueur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseHelper.updateJoueur(joueur.getId(), editTextNomJoueur.getText().toString(), editTextPrenomJoueur.getText().toString(), editTextNumLicenceJoueur.getText().toString());
+                databaseHelper.updateJoueur(joueur.getId(), editTextNomJoueur.getText().toString(), editTextPrenomJoueur.getText().toString(), Integer.parseInt(editTextNumLicenceJoueur.getText().toString()));
                 firebaseReference2.child(String.valueOf(joueur.getId())).child("nom_joueur").setValue(editTextNomJoueur.getText().toString());
                 firebaseReference2.child(String.valueOf(joueur.getId())).child("prenom_joueur").setValue(editTextPrenomJoueur.getText().toString());
-                firebaseReference2.child(String.valueOf(joueur.getId())).child("num_licence_joueur").setValue(editTextNumLicenceJoueur.getText().toString());
+                firebaseReference2.child(String.valueOf(joueur.getId())).child("num_licence_joueur").setValue(Integer.parseInt(editTextNumLicenceJoueur.getText().toString()));
 
 
                 Toast.makeText(UpdateDeleteJoueurActivity.this, "Updated Successfully!", Toast.LENGTH_SHORT).show();

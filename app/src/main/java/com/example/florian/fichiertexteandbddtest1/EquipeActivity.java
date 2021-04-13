@@ -328,6 +328,7 @@ public class EquipeActivity extends AppCompatActivity {
 
                             databaseHelper.addEquipe(equipe.getNom(),equipe.getNiveau());
                         }
+                        Toast.makeText(EquipeActivity.this,"Données importées",Toast.LENGTH_LONG).show();
                     }
 
                     @Override

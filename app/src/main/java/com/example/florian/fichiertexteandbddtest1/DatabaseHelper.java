@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.Editable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -206,7 +207,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //update un joueur
-    public void updateJoueur(int id, String nom, String prenom, String numLicence){
+    public void updateJoueur(int id, String nom, String prenom, int numLicence){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(JOUEUR_KEY_NOM, nom);
