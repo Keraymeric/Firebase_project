@@ -1001,23 +1001,36 @@ public class Recapitulatif extends AppCompatActivity {
         buttonRecapitulatifEmailPdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //on creer le PDF avant de l'envoyer
-                final String filename= nomEquipeA +  "_" + nomEquipeB +"_Date:" + date + ".pdf" ;
-                CreatePDF.createPdf(filename, loadPreparatif, loadEquipeA, loadEquipeB, loadSet1, loadSet2, loadSet3, loadSet4, loadSet5, loadResultat, loadApprobation, Recapitulatif.this);
+                String nomEA = loadPreparatif.getString("nomEquipeA", "equipeA");
+                nomEA = nomEA.replace(" ", "");
+                nomEA = nomEA.replace("/", "");
+                String nomEB = loadPreparatif.getString("nomEquipeB", "equipeB");
+                nomEB = nomEB.replace(" ", "");
+                nomEB = nomEB.replace("/", "");
+                final String pdfName = nomEA +  "-" + nomEB +"  date:" + date;
 
+                //on creer le PDF avant de l'envoyer
+                CreatePDF.createPdf("monPDF", loadPreparatif, loadEquipeA, loadEquipeB, loadSet1, loadSet2, loadSet3, loadSet4, loadSet5, loadResultat, loadApprobation, Recapitulatif.this);
+
+                String filename="monPDF.pdf";
                 File filelocation = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), filename);
                 Uri path = Uri.fromFile(filelocation);
-
-                storageRef.child("Match").child(filename).putFile(path)
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                // set the type to 'email'
+                emailIntent .setType("vnd.android.cursor.dir/email");
+                //String to[] = {"asd@gmail.com"};
+                //emailIntent .putExtra(Intent.EXTRA_EMAIL, to);
+                // the attachment
+                storageRef.child("Récapitulatif Matchs").child(pdfName).putFile(path)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                        FirebaseDatabase database= FirebaseDatabase.getInstance();
-                        DatabaseReference reference = database.getReference();
-                        reference.child("Match Url").child(filename).setValue(url);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                String url = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                                FirebaseDatabase database= FirebaseDatabase.getInstance();
+                                DatabaseReference reference = database.getReference();
+                                reference.child("Match Url").child(pdfName).setValue(url);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(Recapitulatif.this,"Erreur lors du téléchargement",Toast.LENGTH_LONG);
@@ -1028,13 +1041,6 @@ public class Recapitulatif extends AppCompatActivity {
 
                     }
                 });
-
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                // set the type to 'email'
-                emailIntent .setType("vnd.android.cursor.dir/email");
-                //String to[] = {"asd@gmail.com"};
-                //emailIntent .putExtra(Intent.EXTRA_EMAIL, to);
-                // the attachment
                 emailIntent .putExtra(Intent.EXTRA_STREAM, path);
                 // the mail subject
                 emailIntent .putExtra(Intent.EXTRA_SUBJECT, "Feuille de match : " + loadPreparatif.getString("nomEquipeA", "") + " - " + loadPreparatif.getString("nomEquipeB", "") + " " + loadPreparatif.getString("date", ""));
