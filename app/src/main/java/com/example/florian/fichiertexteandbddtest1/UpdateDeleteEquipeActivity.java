@@ -162,7 +162,7 @@ public class UpdateDeleteEquipeActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 //resultText.setText("Hello, " + editText.getText());
                                 //ON AJOUTE LE JOUEUR DANS LA BASE DE DONNEES //il faut lier le joueur avec l'équipe !
-                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), Integer.parseInt(editTextNumLicenceAjouterJoueurDialog.getText().toString()), equipe.getId());
+                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), editTextNumLicenceAjouterJoueurDialog.getText().toString(), equipe.getId());
                                 Joueur joueur = databaseHelper.getLastJoueurInsert(equipe.getId());
                                 firebaseReference.child(String.valueOf(joueur.getId())).setValue(joueur);
                                 //IL FAUT METTRE A JOUR L'ADAPTER

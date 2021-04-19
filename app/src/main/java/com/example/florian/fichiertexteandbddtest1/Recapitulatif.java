@@ -1002,7 +1002,7 @@ public class Recapitulatif extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //on creer le PDF avant de l'envoyer
-                final String filename= nomEquipeA +  "-" + nomEquipeB +"date:" + date + ".pdf" ;
+                final String filename= nomEquipeA +  "_" + nomEquipeB +"_Date:" + date + ".pdf" ;
                 CreatePDF.createPdf(filename, loadPreparatif, loadEquipeA, loadEquipeB, loadSet1, loadSet2, loadSet3, loadSet4, loadSet5, loadResultat, loadApprobation, Recapitulatif.this);
 
                 File filelocation = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), filename);

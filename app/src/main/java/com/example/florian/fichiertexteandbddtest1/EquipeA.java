@@ -95,7 +95,7 @@ public class EquipeA extends AppCompatActivity {
 
         final ArrayList<Joueur> lesJoueurs = databaseHelper.getAllJoueurOfEquipe(Integer.parseInt(loadPreparatif.getString("idEquipeA", "")));
         Joueur joueurVide = new Joueur(); //ajout d'une équipe vide pour le cas où l'équipe n'est pas encore choisie
-        joueurVide.setNom_joueur(""); joueurVide.setPrenom_joueur(""); joueurVide.setNum_licence_joueur(0); joueurVide.setId(-1);
+        joueurVide.setNom_joueur(""); joueurVide.setPrenom_joueur(""); joueurVide.setNum_licence_joueur(" "); joueurVide.setId(-1);
         lesJoueurs.add(0, joueurVide);
 
         final JoueurAdapteur joueurAdapter = new JoueurAdapteur(this, lesJoueurs);
@@ -334,7 +334,7 @@ public class EquipeA extends AppCompatActivity {
 
                                 SharedPreferences loadPreparatif = getSharedPreferences("preparatif", 0);
                                 String idEquipeA = loadPreparatif.getString("idEquipeA", "");
-                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), Integer.parseInt(editTextNumLicenceAjouterJoueurDialog.getText().toString()), Integer.parseInt(idEquipeA));
+                                databaseHelper.addJoueur(editTextNomAjouterJoueurDialog.getText().toString(), editTextPrenomAjouterJoueurDialog.getText().toString(), editTextNumLicenceAjouterJoueurDialog.getText().toString(), Integer.parseInt(idEquipeA));
 
                                 //Faire ICI Pareil que valider
                                 buttonEquipeAValider.performClick();

@@ -6,7 +6,7 @@ public class Joueur implements Serializable {
 
     private String nom_joueur;
     private String prenom_joueur;
-    private int num_licence_joueur;
+    private String num_licence_joueur;
     private int id_equipe_joueur;
     private int id;
 
@@ -14,7 +14,7 @@ public class Joueur implements Serializable {
     public Joueur() {
     }
 
-    public Joueur(String nom_joueur, String prenom_joueur, int num_licence_joueur, int id_equipe_joueur, int id) {
+    public Joueur(String nom_joueur, String prenom_joueur, String num_licence_joueur, int id_equipe_joueur, int id) {
         this.nom_joueur = nom_joueur;
         this.prenom_joueur = prenom_joueur;
         this.num_licence_joueur = num_licence_joueur;
@@ -38,11 +38,11 @@ public class Joueur implements Serializable {
         this.prenom_joueur = prenom_joueur;
     }
 
-    public int getNum_licence_joueur() {
+    public String getNum_licence_joueur() {
         return num_licence_joueur;
     }
 
-    public void setNum_licence_joueur(int num_licence_joueur) {
+    public void setNum_licence_joueur(String num_licence_joueur) {
         this.num_licence_joueur = num_licence_joueur;
     }
 

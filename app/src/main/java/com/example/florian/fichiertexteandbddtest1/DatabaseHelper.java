@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.Editable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -39,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + JOUEUR_KEY_NOM + " TEXT,"
             + JOUEUR_KEY_PRENOM + " TEXT,"
             + JOUEUR_KEY_EQUIPE + " INT,"
-            + JOUEUR_KEY_NUM_LICENCE + " INT,"
+            + JOUEUR_KEY_NUM_LICENCE + " TEXT,"
             + "FOREIGN KEY(" + JOUEUR_KEY_EQUIPE + ") REFERENCES " + TABLE_EQUIPE + "(id)"
             + ");";
 
@@ -161,7 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         joueur.setNom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
         joueur.setPrenom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
         joueur.setId(c.getInt(c.getColumnIndex(JOUEUR_KEY_ID)));
-        joueur.setNum_licence_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
+        joueur.setNum_licence_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
         joueur.setId_equipe_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_EQUIPE)));
         return joueur;
     }
@@ -170,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=====================================
 
     //ajouter un joueur
-    public void addJoueur(String nom, String prenom, int numLicence, int id_equipe){
+    public void addJoueur(String nom, String prenom, String numLicence, int id_equipe){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(JOUEUR_KEY_NOM, nom);
@@ -195,7 +194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 joueur.setId(c.getInt(c.getColumnIndex(JOUEUR_KEY_ID)));
                 joueur.setNom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
                 joueur.setPrenom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
-                joueur.setNum_licence_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
+                joueur.setNum_licence_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
                 //Y a-t-il besoin de faire un champs id_equipe dans joueur ?
 
                 joueurArrayList.add(joueur);
@@ -207,7 +206,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //update un joueur
-    public void updateJoueur(int id, String nom, String prenom, int numLicence){
+    public void updateJoueur(int id, String nom, String prenom, String numLicence){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(JOUEUR_KEY_NOM, nom);
@@ -234,7 +233,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         joueur.setId(c.getInt(c.getColumnIndex(JOUEUR_KEY_ID)));
         joueur.setNom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NOM)));
         joueur.setPrenom_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_PRENOM)));
-        joueur.setNum_licence_joueur(c.getInt(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
+        joueur.setNum_licence_joueur(c.getString(c.getColumnIndex(JOUEUR_KEY_NUM_LICENCE)));
         //joueur.setEquipeId(c.getString(c.getColumnIndex(JOUEUR_KEY_EQUIPE)));
 
         return joueur;
